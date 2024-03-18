@@ -16,7 +16,7 @@ function Nav(props){
   const lis =[]
   for(let i=0; i<props.topics.length; i++){
     let t = props.topics[i];
-    lis.push(<li><a href={'/read/'+t.id}>{t.title}</a></li>);
+    lis.push(<li key={t.id}><a href={'/read/'+t.id}>{t.title}</a></li>);//key={t.id} 는 콘솔 오류 때문에 넣은 key
   }
 
   return(
