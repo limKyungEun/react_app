@@ -19,7 +19,12 @@ function Nav(props){
   const lis =[]
   for(let i=0; i<props.topics.length; i++){
     let t = props.topics[i];
-    lis.push(<li key={t.id}><a href={'/read/'+t.id}>{t.title}</a></li>);//key={t.id} 는 콘솔 오류 때문에 넣은 key
+    lis.push(<li key={t.id}>
+      <a id={t.id} href={'/read/'+t.id} onClick={event=>{
+        event.preventDefault();
+        props.onChangeMode(event.target.id);
+      }}>{t.title}</a>
+      </li>);//key={t.id} 는 콘솔 오류 때문에 넣은 key
   }
 
   return(
@@ -63,7 +68,10 @@ const topics =[
       <Header title="Web" onChangeMode={function(){
         alert('Header');
       }}></Header>{/* 위에 잇는 return헤드를 호출 */}
-      <Nav topics={topics}></Nav>{/* 위에 잇는 return네브를 호출 */}
+
+      <Nav topics={topics} onChangeMode={(id)=>{
+        alert(id);
+      }}></Nav>{/* 위에 잇는 return네브를 호출 */}
       <Article title="Welcome" body="Hello, Web"></Article>{/* 위에 잇는 return아티클를 호출 */}
       {/* 태그 꺽쇠 안쪽에 컨탭하면 자동 임포트 된다 */}
     
