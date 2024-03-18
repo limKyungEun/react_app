@@ -11,25 +11,29 @@ function Header(props){
   )
 
 }
-function Nav(){
+function Nav(props){
+
+  const lis =[]
+  for(let i=0; i<props.topics.length; i++){
+    let t = props.topics[i];
+    lis.push(<li><a href={'/read/'+t.id}>{t.title}</a></li>);
+  }
 
   return(
     <nav>
         <ol>
-          <li><a href="/read/1">html</a></li>
-          <li><a href="/read/2">css</a></li>
-          <li><a href="/read/3">JS</a></li>
+          {lis}
         </ol>
     </nav>
   )
 
 }
-function Article(){//여기서 함수명에 밑줄이 갈때는 함수를 만들어 놓고 사용하지 않아서
+function Article(props){//여기서 함수명에 밑줄이 갈때는 함수를 만들어 놓고 사용하지 않아서
 
   return(
     <article>
-    <h2>Welcome</h2>
-    Hello, WEB
+    <h2>{props.title}</h2>
+    {props.body}
     </article>
   )
 
@@ -43,15 +47,21 @@ function Article(){//여기서 함수명에 밑줄이 갈때는 함수를 만들
 // 태그 꺽쇠 안쪽에 컨탭하면 자동 임포트
 
 function App() {
+
+const topics =[
+
+  {id:1, title:'html',body:'html is...'},
+  {id:2, title:'css',body:'css is...'},
+  {id:3, title:'javascript',body:'javascript is...'}
+]
+
   return (
     <div className="App">
       <Header title="React"></Header>{/* 위에 잇는 return헤드를 호출 */}
-      <Header title="Web"></Header>
-      <Header title="CSS"></Header>
-      <Nav></Nav>{/* 위에 잇는 return네브를 호출 */}
-      <Article></Article>{/* 위에 잇는 return아티클를 호출 */}
+      <Nav topics={topics}></Nav>{/* 위에 잇는 return네브를 호출 */}
+      <Article title="Welcome" body="Hello, Web"></Article>{/* 위에 잇는 return아티클를 호출 */}
       {/* 태그 꺽쇠 안쪽에 컨탭하면 자동 임포트 된다 */}
-   
+    
     </div>
   );
 }

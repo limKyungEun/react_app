@@ -1,3 +1,4 @@
+//자바의 Juit처럼 리액트의 테스트 기능
 import { render, screen } from '@testing-library/react';
 import App from './App';
 
