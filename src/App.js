@@ -6,7 +6,10 @@ function Header(props){
 
   return(
     <header>
-        <h1><a href='/'>{props.title}</a></h1>
+        <h1><a href='/' onClick={(event)=>{//화살표 함수 근데 굳이?
+          event.preventDefault();
+          props.onChangeMode();
+        }}>{props.title}</a></h1>
     </header>
   )
 
@@ -57,7 +60,9 @@ const topics =[
 
   return (
     <div className="App">
-      <Header title="React"></Header>{/* 위에 잇는 return헤드를 호출 */}
+      <Header title="Web" onChangeMode={function(){
+        alert('Header');
+      }}></Header>{/* 위에 잇는 return헤드를 호출 */}
       <Nav topics={topics}></Nav>{/* 위에 잇는 return네브를 호출 */}
       <Article title="Welcome" body="Hello, Web"></Article>{/* 위에 잇는 return아티클를 호출 */}
       {/* 태그 꺽쇠 안쪽에 컨탭하면 자동 임포트 된다 */}
