@@ -1,7 +1,37 @@
 import './App.css';
-import Article from './component/Aricle';
-import Header from './component/Header';
-import Nav from './component/Nav';
+
+function Header(){
+
+  return(
+    <header>
+        <h1><a href='/'>REACT</a></h1>
+    </header>
+  )
+
+}
+function Nav(){
+
+  return(
+    <nav>
+        <ol>
+          <li><a href="/read/1">html</a></li>
+          <li><a href="/read/2">css</a></li>
+          <li><a href="/read/3">JS</a></li>
+        </ol>
+    </nav>
+  )
+
+}
+function Article(){//여기서 함수명에 밑줄이 갈때는 함수를 만들어 놓고 사용하지 않아서
+
+  return(
+    <article>
+    <h2>Welcome</h2>
+    Hello, WEB
+    </article>
+  )
+
+}
 
 // 순서
 // app.js에서 함수를 만듬
